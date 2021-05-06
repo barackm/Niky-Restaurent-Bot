@@ -64,7 +64,7 @@ class Greeting
     end
 
     def get_my_creator(input)
-        values = ['who created','creates', "who created you", "creator", 'create', 'when were you', 'your creature']
+        values = ['who created','creates','made', 'who is your creator','created',"who created you", "creator", 'create', 'when were you', 'your creator']
         if values.any? {|value| input.include? value }
             return true
         end
@@ -73,6 +73,14 @@ class Greeting
 
     def say_bye(input)
         values = ['bye','goodbye', "see you", "cao", 'adios', 'bye bye']
+        if values.any? {|value| input.include? value }
+            return true
+        end
+        false
+    end
+
+    def receive_compliments(input) 
+        values = ['i love you','i appreciate you', "i appreciate", "i like you", 'happy to talk']
         if values.any? {|value| input.include? value }
             return true
         end

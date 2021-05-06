@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-puts "Hello!"
+require_relative "../lib/Raven.rb"
+Raven.new

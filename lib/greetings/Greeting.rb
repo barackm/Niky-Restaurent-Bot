@@ -1,6 +1,6 @@
 class Greeting 
     def check_greetings(input)
-        values = ['morning','raven','evening','hey','hy','hi','hello','how do you do', 'howdy']
+        values = ['morning','raven','evening','hey','hy','hi','hello']
         if values.any? {|value| input.include? value }
             return true
         end
@@ -8,7 +8,7 @@ class Greeting
     end
 
     def check_greetings_answer(input)
-        values = ['how are','great and you','good and you','what about','what about you', 'and you',]
+        values = ['great and you','good and you','what about','what about you', 'and you',]
         if values.any? {|value| input.include? value }
             return true
         end
@@ -16,7 +16,7 @@ class Greeting
     end
 
     def check_bad_news(input)
-        values = ['not good','bad','not okay','not well', 'not really',]
+        values = ['not good','im not good', "im not good",'bad','not okay','not well',"im not well", 'im not well', 'not really',]
         if values.any? {|value| input.include? value }
             return true
         end
@@ -24,7 +24,7 @@ class Greeting
     end
 
     def check_affirmation(input)
-        values = ['good', 'well','ok', 'cool','fine', 'great', 'okay', 'hum', 'wonderful', 'exactly', 'absolutly', 'sure']
+        values = ['good', 'well','ok', 'cool','fine', 'great', 'okay', 'hum', 'wonderful', 'exactly', 'absolutly', 'sure', 'alright']
         if values.any? {|value| input.include? value }
             return true
         end
@@ -56,7 +56,15 @@ class Greeting
     end
 
     def receive_greetings(input)
-        values = ['how are you', "are you okay", "are you cool", 'how are you', 'how are you doing', 'are you okay', 'are you fine', 'how is it', "what's up", 'whats up', 'how do you do']
+        values = ['how are you', "are you okay", "are you cool", 'how are you', 'how are you doing', 'are you okay', 'are you fine', 'how is it', "whats up", 'whats up','how do you do', 'howdy']
+        if values.any? {|value| input.include? value }
+            return true
+        end
+        false
+    end
+
+    def get_my_creator(input)
+        values = ['who created','creates', "who created you", "creator", 'create', 'when were you', 'your creature']
         if values.any? {|value| input.include? value }
             return true
         end

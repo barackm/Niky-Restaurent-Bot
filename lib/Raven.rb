@@ -1,10 +1,15 @@
 require 'telegram/bot'
 
 class Raven
-    attr_reader :greeting, :token
-    def initialize(token, greeting)
+    attr_reader :greeting, :token, :order, :suggestions, :suggest_food, :suggest_drinks
+    def initialize(token, greeting, order, suggestions)
         @greeting = greeting
         @token = token
+        @order = order
+        @suggestions = suggestions
+        @suggest_food = false
+        @suggest_drinks = false
+
         Telegram::Bot::Client.run(@token) do |bot|
             bot.listen do |message|
             received_message = message.text.downcase.gsub(/[^A-Za-z0-9\s]/i, '')
@@ -15,9 +20,24 @@ class Raven
 
             when @greeting.get_my_creator(received_message)
                 send_message(bot, message, "I was created with ❤️ by Barack Mukelenga in 2021 while he was studying sofware development at microverse.\nIf you want to know more about him here are some usefull links:\n- https://github.com/barackm/ \n- https://twitter.com/BarackMukelenga \n- https://www.linkedin.com/in/baraka-mukelenga/")
+            
+            when @suggestions.food_drinks_suggestion_accepted(received_message)
+                if(@suggest_food)
+                    send_message(bot, message, "Okay wondefull, you will be served in few minutes. Thanks for your patience.")
+                elsif(@suggest_drinks)
+                    send_message(bot, message, "Okay wondefull, you will be served in few minutes. Thanks for your patience.")
+                end
 
             when @greeting.check_rejection(received_message)
-                send_message(bot, message, "Oh sure? okay no problem #{message.from.first_name}, if there is something I can help with just let me know.")
+                if(@suggest_food)
+                    send_message(bot, message, "Oh sure? okay no problem #{message.from.first_name}, Injoy, to your thirst 😋.")
+                    @suggest_food = false
+                elsif(@suggest_drinks)
+                    send_message(bot, message, "Oh sure? okay no problem #{message.from.first_name}, Injoy your meal 😋.")
+                    @suggest_drinks = false
+                else
+                    send_message(bot, message, "Oh sure? okay no problem #{message.from.first_name}, if there is something I can help with just let me know.")
+                end
 
             when @greeting.check_greetings(received_message)
                 send_message(bot, message, "Hi #{message.from.first_name} welcome to our restaurent\nHow are you doing today ?")
@@ -34,10 +54,30 @@ class Raven
             when @greeting.check_bad_news(received_message)
                 send_message(bot, message, "Oh sorry to hear that #{message.from.first_name}, I am here if you need help.")
 
+            when @order.menu_asked(received_message)
+                send_message(bot, message, "❤️❤️ NIKY RESTAURENT ❤️❤️\n\nFOOD🍔\n✔️ Cheeseburger 🍔\n✔️ Chicken 🍖\n✔️ Reuben sandwich\n✔️ Hot dog 🌭\n✔️ Nachos\n✔️ Cobb Salad 🥗\n✔️ Twinkies\n✔️ Jambalaya\n✔️ Macaronni and chees\n✔️ chips 🍟\n✔️ Cioppino\n✔️ Baked beans\n\nDRINKS🍷\n✔️ Water\n✔️ Coors Light\n✔️ Cofee\n✔️ Miller Lite\n✔️ Budweiser\n✔️ Modelo Espacial\n✔️ Bud light\n✔️ Vodka\n\n\nI hope you have found what were looking for.\n\n✅ If yes just type the exact name of your choice.\n\n✅ If no, sorry... But is you need a suggestion from me just type 👉 suggest.")
+                
+            when @greeting.say_bye(received_message)
+                send_message(bot, message, "Okay bye #{message.from.first_name}, see you later.👋")
+
+            when @order.order_asked(received_message)
+                send_message(bot, message, "Great, we have amazing dishes and wines, you will love it I swear Humm😋😋😋 🍖 🍷. If you want to see our menu just type 👉 menu. If you want my suggestion just type 👉 suggest")
 
             when @greeting.got_name(received_message)
                 send_message(bot, message, "Nice to meet you #{message.from.first_name}, what new dish would you like to taste today from our best recipes?")
            
+            when @order.get_food_order(received_message)
+                @suggest_drinks = true
+                @suggest_food = false
+                choice = message.text
+                send_message(bot, message, "Great choice! What about wine? Would you like some red wine with your #{choice}?")
+
+            when @order.get_drinks_order(received_message)
+                @suggest_food = true
+                @suggest_drinks = false
+                choice = message.text
+                send_message(bot, message, "Wow, Great choice! What about food? Would you like a Chicken with your #{choice}?")
+
             when @greeting.check_affirmation(received_message)
                 send_message(bot, message, "Great, let me know if I can help.")
 

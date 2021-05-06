@@ -70,4 +70,12 @@ class Greeting
         end
         false
     end
+
+    def say_bye(input)
+        values = ['bye','goodbye', "see you", "cao", 'adios', 'bye bye']
+        if values.any? {|value| input.include? value }
+            return true
+        end
+        false
+    end
 end

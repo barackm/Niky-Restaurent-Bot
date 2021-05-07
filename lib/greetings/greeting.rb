@@ -68,7 +68,7 @@ class Greeting
   end
 
   def get_my_creator(input)
-    values = ['who created', 'creates', 'made', 'who is your creator', 'created', 'who created you', 'creator',
+    values = ['who created', 'creates', 'made', 'who is your creator','author', 'created', 'who created you', 'creator',
               'create', 'when were you', 'your creator']
     return true if values.any? { |value| input.include? value }
 

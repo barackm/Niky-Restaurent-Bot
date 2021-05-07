@@ -28,19 +28,19 @@ class Raven
         puts message.text
         if start(received_message)
           send_message(bot, message,
-                       "Hello #{message.from.first_name} 👋 ,I hope you are good, I'm Raven and welcome to Niky Restaurant😋. \nI'm a Bot🤖 developped at microverse by Barack Mukelenga😍. \nI'm here to help you pass an order so feel free to tell me what you need to taste today or just type 👉 menu if you want to see our menu. 🍔🥗 🥘🍾🍷\n\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu\n✔️ suggest: to have my suggestion on what you can order\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")
+                       "Hello #{message.from.first_name} 👋 ,I hope you are good, I'm Raven, and welcome to Niky Restaurant😋. \nI'm a Bot🤖 developed at microverse by Barack Mukelenga😍. \nI'm here to help you pass an order so feel free to tell me what you need to taste today or just type 👉 menu if you want to see our menu. 🍔🥗 🥘🍾🍷\n\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu\n✔️ suggest: to have my suggestion on what you can order\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")
 
         elsif @greeting.get_my_creator(received_message)
           send_message(bot, message,
-                       "I was created with ❤️ by Barack Mukelenga in 2021 while he was studying sofware development at microverse.\nIf you want to know more about him here are some usefull links:\n- https://github.com/barackm/ \n- https://twitter.com/BarackMukelenga \n- https://www.linkedin.com/in/baraka-mukelenga/")
+                       "I was created with ❤️ by Barack Mukelenga in 2021 while he was studying software development at microverse.\nIf you want to know more about him here are some useful links:\n- https://github.com/barackm/ \n- https://twitter.com/BarackMukelenga \n- https://www.linkedin.com/in/baraka-mukelenga/")
 
         elsif @suggestions.food_drinks_suggestion_accepted(received_message)
           if @suggest_food
             send_message(bot, message,
-                         'Okay wondefull, you will be served in few minutes. Thanks for your patience.')
+                         'Okay, wonderful, you will be served in few minutes. Thanks for your patience.')
           elsif @suggest_drinks
             send_message(bot, message,
-                         'Okay wondefull, you will be served in few minutes. Thanks for your patience.')
+                         'Okay, wonderful, you will be served in few minutes. Thanks for your patience.')
           end
 
         elsif @order.help_asked(received_message)
@@ -79,8 +79,8 @@ class Raven
                        "Wow, Great choice! What about food? Would you like a Chicken with your #{choice}?")
 
         elsif @greeting.check_greetings(received_message)
-          greeting_messages = ["Hi #{message.from.first_name} welcome to our restaurant\nHow are you doing today ?", "Hi there #{message.from.first_name} and welcome to our restaurant\nHow how is it going today ?",
-                               "Hi #{message.from.first_name}, It's a pleasure to have you here. welcome to our restaurant\nHow are you doing today ?"].sample
+          greeting_messages = ["Hi #{message.from.first_name}, welcome to our restaurant\nHow are you doing today ?", "Hi there #{message.from.first_name} and welcome to our restaurant\nHow how is it going today ?",
+                               "Hi #{message.from.first_name}, It's a pleasure to have you here. Welcome to our restaurant\nHow are you doing today?"].sample
 
           send_message(bot, message, greeting_messages)
 
@@ -143,7 +143,7 @@ class Raven
 
         else
           send_message(bot, message,
-                       "😰 I'm sorry #{message.from.first_name}, I'm not able to undertand that, can you please ask your question differently?")
+                       "😰 I'm sorry #{message.from.first_name}, I'm not able to understand that, can you please ask your question differently?")
         end
       end
     end

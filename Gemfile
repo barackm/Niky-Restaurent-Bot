@@ -1,11 +1,10 @@
-# frozen_string_literal: true
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
-gem 'telegram-bot-ruby'
-gem  'json'
-gem 'net-http-persistent', '~> 2.9', '>= 2.9.4'
 gem 'dotenv'
-gem 'rubocop', '~> 0.39.0'
+gem 'json'
+gem 'net-http-persistent', '~> 2.9', '>= 2.9.4'
+gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'telegram-bot-ruby'

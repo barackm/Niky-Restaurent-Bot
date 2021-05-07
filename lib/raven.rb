@@ -25,7 +25,6 @@ class Raven
     Telegram::Bot::Client.run(@token) do |bot|
       bot.listen do |message|
         received_message = message.text.downcase.gsub(/[^A-Za-z0-9\s]/i, '')
-        puts message.text
         if start(received_message)
           send_message(bot, message,
                        "Hello #{message.from.first_name} 👋 ,I hope you are good, I'm Raven, and welcome to Niky Restaurant😋. \nI'm a Bot🤖 developed at microverse by Barack Mukelenga😍. \nI'm here to help you pass an order so feel free to tell me what you need to taste today or just type 👉 menu if you want to see our menu. 🍔🥗 🥘🍾🍷\n\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu\n✔️ suggest: to have my suggestion on what you can order\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")

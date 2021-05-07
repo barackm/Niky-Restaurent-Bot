@@ -42,7 +42,7 @@ class Order
     values = ['thank you', 'thanks']
     return true if values.any? { |value| input.include? value }
 
-    false
+    false 
   end
 end
 

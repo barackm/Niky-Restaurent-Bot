@@ -24,7 +24,7 @@ class Suggestions < Order
               'go ahead', 'idea']
     return true if values.any? { |value| input.include? value }
 
-    false 
+    false
   end
 end
 # rubocop:enable Layout/LineLength

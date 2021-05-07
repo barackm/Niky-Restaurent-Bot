@@ -166,4 +166,3 @@ end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Layout/LineLength
 # rubocop:enable Lint/DuplicateBranch
-

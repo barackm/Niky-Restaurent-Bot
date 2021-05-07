@@ -1,4 +1,3 @@
-
 class Greeting
   def check_greetings(input)
     values = %w[morning raven evening hey hy hi hello]

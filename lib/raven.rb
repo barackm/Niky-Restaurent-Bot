@@ -45,7 +45,7 @@ class Raven
 
         elsif @order.help_asked(received_message)
           send_message(bot, message,
-                       "HELP\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu\n✔️ suggest: to have my suggestion on what you can order\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")
+                       "HELP\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu.\n✔️ suggest: to have my suggestion on what you can order.\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")
 
         elsif @greeting.check_rejection(received_message)
           if @suggest_food

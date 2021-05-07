@@ -1,3 +1,4 @@
+# rubocop:disable Naming/FileName
 # rubocop:disable Layout/LineLength
 require_relative './order'
 
@@ -28,3 +29,4 @@ class Suggestions < Order
   end
 end
 # rubocop:enable Layout/LineLength
+# rubocop:enable Naming/FileName

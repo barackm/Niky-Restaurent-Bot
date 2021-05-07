@@ -143,7 +143,7 @@ class Raven
 
         else
           send_message(bot, message,
-                       "😰 I'm sorry, #{message.from.first_name}, I'm not able to undertand that, can you please ask your question differently? ")
+                       "😰 I'm sorry #{message.from.first_name}, I'm not able to undertand that, can you please ask your question differently?")
         end
       end
     end

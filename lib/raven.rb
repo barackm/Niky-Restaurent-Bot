@@ -1,4 +1,3 @@
-
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/CyclomaticComplexity
@@ -54,7 +53,7 @@ class Raven
             @suggest_food = false
           elsif @suggest_drinks
             send_message(bot, message,
-                         "Oh sure? okay no problem #{message.from.first_name}, enjoy your meal 😋.")
+                         "Oh sure? okay no problem #{message.from.first_name}, enjoy your meal 😋")
             @suggest_drinks = false
           else
             send_message(bot, message,
@@ -160,4 +159,11 @@ class Raven
     bot.api.send_message(chat_id: message.chat.id, text: text)
   end
 end
+
+# rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Layout/LineLength
+# rubocop:enable Lint/DuplicateBranch
 

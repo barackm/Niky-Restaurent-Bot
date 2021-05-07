@@ -1,3 +1,4 @@
+
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/CyclomaticComplexity
@@ -160,9 +161,3 @@ class Raven
   end
 end
 
-# rubocop:enable Metrics/BlockLength
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/MethodLength
-# rubocop:enable Layout/LineLength
-# rubocop:enable Lint/DuplicateBranch

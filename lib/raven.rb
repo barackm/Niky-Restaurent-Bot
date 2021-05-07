@@ -53,7 +53,7 @@ class Raven
             @suggest_food = false
           elsif @suggest_drinks
             send_message(bot, message,
-                         "Oh sure? okay no problem #{message.from.first_name}, enjoy your meal 😋.")
+                         "Oh sure? okay no problem #{message.from.first_name}, enjoy your meal 😋")
             @suggest_drinks = false
           else
             send_message(bot, message,

@@ -60,8 +60,8 @@ class Greeting
   end
 
   def receive_greetings(input)
-    values = ['how are you', 'are you good', 'are you okay', 'are you cool', 'how are you', 'how are you doing', 'are you okay',
-              'are you fine', 'how is it', 'whats up', 'whats up', 'how do you do', 'howdy']
+    values = ['how are you', 'are you good', 'are you okay', 'are you cool', 'how are you', 'how are you doing',
+              'are you okay', 'are you fine', 'how is it', 'whats up', 'whats up', 'how do you do', 'howdy']
     return true if values.any? { |value| input.include? value }
 
     false

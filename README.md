@@ -42,11 +42,19 @@ After you have entered these informations you will receive a message from botfat
 
 After you have got your API access token you will need to tell the program about that token so you can get access to the Bot. To do so you will need to open `bin/main.rb` file,
 and replace the following line `token = ENV['BOT_NIKY_TELEGRAM_API_KEY']` to `token = (your new access token)`.
+⚠️ The token needs to be in quotes (`' '`) like `token = '1749.....:AAHiDAp_830.........'`.
+
+⚠️ If you need to push the project to `GitHub` you will need to hide your token key by doing the following:
+
+- From the root of the project create a file named `.env` and add the line `BOT_NIKY_TELEGRAM_API_KEY = (your access token)` without quotes.
+- Open again the file `bin/main.rb` and change the value of the `token` variable to be `ENV['BOT_NIKY_TELEGRAM_API_KEY']` to load the token from the `.env` file.
+
+Now you can push your project to `GitHub` without any problem.
 
 ### Usage
 
-To be able to interact with your bot now, you will need to run the following command from your the root of the project in your terminal `bin/main.rb`.
-Now you can open your telegram app and in the search bar type `@my_ant_bot` ⚠️ (replace this with your bot username). Then have fun with your bot.
+To be able to interact with your bot now, you will need to run the following command from the root of the project in your terminal `bin/main.rb`.
+Now you can open your telegram app and in the search bar type `@my_ant_bot` ⚠️ (replace this with your bot username). And that's all, now you can have fun with your bot 🤖.
 
 ### Run tests
 

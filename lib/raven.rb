@@ -24,8 +24,8 @@ class Raven
   def start_raven # rubocop:disable Metrics/PerceivedComplexity
     Telegram::Bot::Client.run(@token) do |bot|
       bot.listen do |message|
-        received_message = message.text.downcase.gsub(/[^A-Za-z0-9\s]/i, '')
         puts message.text
+        received_message = message.text.downcase.gsub(/[^A-Za-z0-9\s]/i, '')
         if start(received_message)
           send_message(bot, message,
                        "Hello #{message.from.first_name} 👋 ,I hope you are good, I'm Raven, and welcome to Niky Restaurant😋. \nI'm a Bot🤖 developed at microverse by Barack Mukelenga😍. \nI'm here to help you pass an order so feel free to tell me what you need to taste today or just type 👉 menu if you want to see our menu. 🍔🥗 🥘🍾🍷\n\n✅ Here are some keywords you can use to find quickly what you need:\n✔️ menu: to visit our menu\n✔️ suggest: to have my suggestion on what you can order\n✔️ help: if you need any help from me.\n✔️ food or eat: if you are hungry\n\nIf you need to know more about my creator you can just type 👉  creator, or ask any questions regarding that. Thank you!")
@@ -42,6 +42,13 @@ class Raven
             send_message(bot, message,
                          'Okay, wonderful, you will be served in few minutes. Thanks for your patience.')
           end
+
+        elsif @greeting.check_bad_news(received_message)
+          apologies_messages = ["Oh sorry to hear that #{message.from.first_name} I hope everything is going to be okay, I am here if you need help.",
+                                "Oh I'm sorry about that, #{message.from.first_name}, I am here if you need help.",
+                                "My apologize, #{message.from.first_name}, I am here if you need help."].sample
+          send_message(bot, message,
+                       apologies_messages)
 
         elsif @order.help_asked(received_message)
           send_message(bot, message,
@@ -106,13 +113,6 @@ class Raven
                                     "I can't complain, what new dish would you like to taste today from our best recipes?"].sample
           send_message(bot, message,
                        give_greetings_message)
-
-        elsif @greeting.check_bad_news(received_message)
-          apologies_messages = ["Oh sorry to hear that #{message.from.first_name} I hope everything is going to be okay, I am here if you need help.",
-                                "Oh I'm sorry about that, #{message.from.first_name}, I am here if you need help.",
-                                "My apologize, #{message.from.first_name}, I am here if you need help."].sample
-          send_message(bot, message,
-                       apologies_messages)
 
         elsif @order.menu_asked(received_message)
           send_message(bot, message,

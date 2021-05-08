@@ -17,7 +17,8 @@ To have this project up and running I used the following technologies.
 
 **To have a local copy of the project you need to clone the repository by running the following command `git clone https://github.com/barackm/Niky-Restaurent-Bot.git`. However, this is not enough.**
 
-To have the project up and running from you local copy you need to follow these steps:
+- To install the gems available for the project just run `bundle install`.
+- To have the project up and running from you local copy you need to follow these steps:
 
 ### Prerequisites
 

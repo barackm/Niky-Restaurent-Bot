@@ -1,7 +1,7 @@
 # rubocop:disable Layout/LineLength
 require_relative './order'
 
-class Suggestions < Order
+class Suggestions
   attr_reader :order_suggestions
 
   def initialize

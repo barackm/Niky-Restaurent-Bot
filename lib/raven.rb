@@ -1,14 +1,7 @@
-# rubocop:disable Metrics/BlockLength
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Layout/LineLength
-# rubocop:disable Lint/DuplicateBranch
-
 require 'telegram/bot'
-
+# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/PerceivedComplexity
 class Raven
-
   def initialize(token, greeting, order, suggestions)
     @greeting = greeting
     @token = token
@@ -19,7 +12,11 @@ class Raven
 
     start_raven
   end
-  def start_raven # rubocop:disable Metrics/PerceivedComplexity
+
+  # rubocop:disable Layout/LineLength
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
+  def start_raven # rubocop:disable Metrics/CyclomaticComplexity
     Telegram::Bot::Client.run(@token) do |bot|
       bot.listen do |message|
         puts message.text
@@ -85,17 +82,18 @@ class Raven
 
         elsif @greeting.check_greetings(received_message)
           greeting_messages = ["Hi #{message.from.first_name}, welcome to our restaurant\nHow are you doing today ?", "Hi there #{message.from.first_name} and welcome to our restaurant\nHow how is it going today ?",
-                               "Hi #{message.from.first_name}, It's a pleasure to have you here. Welcome to our restaurant\nHow are you doing today?"].sample
+                               "Hi #{message.from.first_name}, It's a pleasure to have you here. Welcome to our restaurant\nHow are you doing today?"].sample # rubocop:disable Layout/LineLength
 
           send_message(bot, message, greeting_messages)
 
         elsif @greeting.receive_greetings(received_message)
-          greeting_answers = ['I am very well thank you, what about you?', 'I am doing great thanks, and you?', 'Oh I am alright thanks, and you?', 'Oh I can\'t complain, what about you?'].sample
+          greeting_answers = ['I am very well thank you, what about you?', 'I am doing great thanks, and you?',
+                              'Oh I am alright thanks, and you?', 'Oh I can\'t complain, what about you?'].sample
           send_message(bot, message, greeting_answers)
 
         elsif @greeting.receive_compliments(received_message)
           send_message(bot, message,
-                       "Oh thank you #{message.from.first_name} for your compliments, I like you too and I am here to help, don't hesitate to tell me whenever you need help ❤️❤️")
+                       "Oh thank you #{message.from.first_name} for your compliments, I like you too and I am here to help, don't hesitate to tell me whenever you need help ❤️❤️") # rubocop:disable Layout/LineLength
 
         elsif @order.say_thank_you(received_message)
           thanks_messages = ["It's my pleasure.", 'Any time.', 'Take it easy.', 'No worries', 'It\'s my desire.'].sample
@@ -117,7 +115,8 @@ class Raven
                        "❤️❤️ NIKY RESTAURANT ❤️❤️\n\nFOOD🍔\n✔️ Cheeseburger 🍔\n✔️ Chicken 🍖\n✔️ Reuben sandwich\n✔️ Hot dog 🌭\n✔️ Nachos\n✔️ Cobb Salad 🥗\n✔️ Twinkies\n✔️ Jambalaya\n✔️ Macaronni and chees\n✔️ chips 🍟\n✔️ Cioppino\n✔️ Baked beans\n\nDRINKS🍷\n✔️ Water\n✔️ Coors Light\n✔️ Coffee\n✔️ Miller Lite\n✔️ Budweiser\n✔️ Modelo Espacial\n✔️ Bud light\n✔️ Vodka\n\n\nI hope you have found what were looking for.\n\n✅ If yes just type the exact name of your choice.\n\n✅ If no, sorry... But is you need a suggestion from me just type 👉 suggest.")
 
         elsif @greeting.say_bye(received_message)
-          goodbye_message = ["Okay bye #{message.from.first_name}, see you later.👋", "Take care #{message.from.first_name}, see you later.👋", "Bye #{message.from.first_name}, see you later.👋"].sample
+          goodbye_message = ["Okay bye #{message.from.first_name}, see you later.👋",
+                             "Take care #{message.from.first_name}, see you later.👋", "Bye #{message.from.first_name}, see you later.👋"].sample
           send_message(bot, message, goodbye_message)
 
         elsif @order.order_asked(received_message)
@@ -146,6 +145,10 @@ class Raven
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Layout/LineLength
+  # rubocop:enable Metrics/MethodLength
+
   private
 
   def start(input)
@@ -160,8 +163,4 @@ class Raven
 end
 
 # rubocop:enable Metrics/BlockLength
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/MethodLength
-# rubocop:enable Layout/LineLength
-# rubocop:enable Lint/DuplicateBranch
+# rubocop:enable Metrics/PerceivedComplexity

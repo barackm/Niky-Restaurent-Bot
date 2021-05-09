@@ -8,7 +8,6 @@
 require 'telegram/bot'
 
 class Raven
-  attr_reader :greeting, :token, :order, :suggestions, :suggest_food, :suggest_drinks
 
   def initialize(token, greeting, order, suggestions)
     @greeting = greeting
@@ -20,7 +19,6 @@ class Raven
 
     start_raven
   end
-private
   def start_raven # rubocop:disable Metrics/PerceivedComplexity
     Telegram::Bot::Client.run(@token) do |bot|
       bot.listen do |message|
@@ -40,7 +38,7 @@ private
                          'Okay, wonderful, you will be served in few minutes. Thanks for your patience.')
           elsif @suggest_drinks
             send_message(bot, message,
-                         'Okay, wonderful, you will be served in few minutes. Thanks for your patience.')
+                         'Great, Your order would arrive in approximately 10minutes.')
           end
 
         elsif @greeting.check_bad_news(received_message)
@@ -148,6 +146,7 @@ private
       end
     end
   end
+  private
 
   def start(input)
     return true if input.include? 'start'

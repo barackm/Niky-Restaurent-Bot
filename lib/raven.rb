@@ -78,7 +78,7 @@ class Raven
           @suggest_drinks = false
           choice = message.text
           send_message(bot, message,
-                       "Wow, Great choice! What about food? Would you like a Chicken with your #{choice}?")
+                       "Wow, Great choice! What about food? Would you like a Chicken with your #{choice} ?")
 
         elsif @greeting.check_greetings(received_message)
           greeting_messages = ["Hi #{message.from.first_name}, welcome to our restaurant\nHow are you doing today ?", "Hi there #{message.from.first_name} and welcome to our restaurant\nHow how is it going today?",

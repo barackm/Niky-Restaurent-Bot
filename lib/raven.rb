@@ -20,7 +20,7 @@ class Raven
 
     start_raven
   end
-
+private
   def start_raven # rubocop:disable Metrics/PerceivedComplexity
     Telegram::Bot::Client.run(@token) do |bot|
       bot.listen do |message|
